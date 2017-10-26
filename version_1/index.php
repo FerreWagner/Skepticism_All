@@ -8,7 +8,7 @@
 require './framework/Base.php';
 //实例化框架类
 $app = new Base();
-//框架跑起来
+//运行框架
 $app->run();
 
 
