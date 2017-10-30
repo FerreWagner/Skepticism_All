@@ -7,17 +7,18 @@
 define('SMVC', realpath('./'));
 define('CORE', SMVC.'/core');
 define('APP', SMVC.'/app');
-
+define('MODULE', 'app');
 define('DEBUG', true);
+
 if (DEBUG){
     ini_set('display_error', 'On');
 }else {
     ini_set('display_error', 'Off');
 }
 
-require CORE.'/common/function.php';
+include CORE.'/common/function.php';
 
-require CORE.'/smvc.php';
+include CORE.'/smvc.php';
 
 spl_autoload_register('\core\smvc::load');  //当引入的类不存在时寻找load方法处理
 
