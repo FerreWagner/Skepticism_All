@@ -1,18 +1,24 @@
 <?php 
 namespace core\lib;
 
-class model extends \PDO
+use core\lib\conf;
+use Medoo\Medoo;
+class model extends Medoo
 {
     public function __construct()
     {
-        $dsn = 'mysql:host=localhost;dbname=company;';
-        $username = 'root';
-        $passwd = '';
-        try {
-            parent::__construct($dsn, $username, $passwd);
-        }catch (\PDOException $e){
-            var_dump($e->getMessage());
-        }
+        //原生配置
+//         $database = conf::all('database');
+//         try {
+//             parent::__construct($database['DSN'], $database['USERNAME'], $database['PASSWD']);
+//         }catch (\PDOException $e){
+//             var_dump($e->getMessage());
+//         }
+        
+        //medoo配置
+        $option = conf::all('database');
+        parent::__construct($option);
+        
         
     }
 }
